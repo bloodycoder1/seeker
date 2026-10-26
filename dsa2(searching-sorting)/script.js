@@ -176,3 +176,52 @@ arr.sort((a,b)=>a-b)
 
 //![ ] Product of Array Except Self — Return products of all elements except the current one without division
 
+let product = (arr) => {
+    const n = arr.length;
+    let prefix = 1;
+    let narr = new Array(n).fill(1);
+
+    // Step 1: Prefix products
+    for (let i = 0; i < n; i++) {
+        narr[i] = prefix;
+        prefix *= arr[i];
+    }
+    console.log(narr);
+    
+    // Step 2: Suffix products
+    let suffix = 1;
+
+    for (let i = n - 1; i >= 0; i--) {
+        narr[i] *= suffix;
+        suffix *= arr[i];
+    }
+
+    return narr;
+};
+
+// console.log(product([1, 2, 3, 4, 5]));
+// [120, 60, 40, 30, 24]
+
+
+// ![ ] Longest Consecutive Sequence — Find the longest sequence of consecutive numbers.
+//  arr = [0, 1, 2, 5, 7, 8, 2, 3, 6, 5, 78, 94, 2];
+
+// const set = new Set(arr);
+// let longest = 0;
+
+// for (const num of set) {
+//     // Start only at the beginning of a sequence
+//     if (!set.has(num - 1)) {
+//         let current = num;
+//         let count = 1;
+
+//         while (set.has(current + 1)) {
+//             current++;
+//             count++;
+//         }
+
+//         longest = Math.max(longest, count);
+//     }
+// }
+
+// console.log(longest); // 4
